@@ -59,6 +59,7 @@ export default class Demo extends React.Component {
   render() {
     return (
       <List className="date-picker-list" style={{ backgroundColor: "white" }}>
+        
         <DatePicker
           value={this.state.date}
           onChange={date => this.setState({ date })}
