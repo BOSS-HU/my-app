@@ -1,9 +1,13 @@
 import React from "react";
+// import { BrowserRouter, Link, Switch,Route } from "react-router-dom";
+// import Detail from "./Detail";
 class Home extends React.Component {
   render() {
-    return <div>Home
-        <span><a href='#/detail'>去detail</a></span>
-    </div>;
+    return (
+        <div>
+          <h2>Home </h2>
+        </div>
+    );
   }
 }
 export default Home;
