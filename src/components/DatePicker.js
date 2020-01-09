@@ -57,6 +57,7 @@ export default class Demo extends React.Component {
     visible: false
   };
   render() {
+    console.log(this.props)
     return (
       <List className="date-picker-list" style={{ backgroundColor: "white" }}>
         

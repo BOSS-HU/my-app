@@ -4,6 +4,7 @@ import { UserContext } from "./context/context";
 import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
+import About from "./components/About";
 import DatePicker from "./components/DatePicker";
 class App extends React.Component {
   constructor(props) {
@@ -23,19 +24,34 @@ class App extends React.Component {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/detail">去detail</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/datePicker">去datePicker</Link>
           </li>
+          <li>
+            <Link to="/about">去about</Link>
+          </li>
         </ul>
-
+        <ul>
+          <li>
+            <Link to="/detail/web">web</Link>
+          </li>
+          <li>
+            <Link to="/detail/java">java</Link>
+          </li>
+          <li>
+            <Link to="/detail/python">python</Link>
+          </li>
+        </ul>
         <Switch>
           <UserContext.Provider value={this.state.user}>
             <Route exact path="/" component={Home} />
-            <Route path="/detail" component={Detail} />
+            <Route path="/detail/:course" component={Detail} />
             <Route path="/datePicker" component={DatePicker} />
+            <Route path="/about" component={About} />
+            <Route component={()=><div>404</div>}></Route>
           </UserContext.Provider>
         </Switch>
       </BrowserRouter>
