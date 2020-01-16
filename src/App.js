@@ -1,12 +1,25 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import { UserContext } from "./context/context";
+import { Provider } from "react-redux";
+import store from "./store";
+// import { UserContext } from "./context/context";
 import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
 import About from "./components/About";
 import DatePicker from "./components/DatePicker";
-class App extends React.Component {
+import ReduxTest from "./components/ReduxTest";
+import PrivateRoute from './components/PrivateRoute'
+import Login from './components/Login'
+
+function NoMatch(){
+  return (
+    <div>
+      404
+    </div>
+  )
+}
+class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +46,9 @@ class App extends React.Component {
           <li>
             <Link to="/about">去about</Link>
           </li>
+          <li>
+            <Link to="/reduxTest">去reduxTest</Link>
+          </li>
         </ul>
         <ul>
           <li>
@@ -46,17 +62,30 @@ class App extends React.Component {
           </li>
         </ul>
         <Switch>
-          <UserContext.Provider value={this.state.user}>
+          <Provider store={store}>
+            {/* context 上下文 */}
+            {/* <UserContext.Provider value={this.state.user}> */}
             <Route exact path="/" component={Home} />
             <Route path="/detail/:course" component={Detail} />
             <Route path="/datePicker" component={DatePicker} />
-            <Route path="/about" component={About} />
-            <Route component={()=><div>404</div>}></Route>
-          </UserContext.Provider>
+            <PrivateRoute path="/about" component={About} />
+            <Route path="/reduxTest" component={ReduxTest} />
+            <Route path="*" component={NoMatch}/>
+            <Route path="/login" component={Login} />
+            {/* </UserContext.Provider> */}
+          </Provider>
         </Switch>
       </BrowserRouter>
     );
   }
 }
-
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Main />
+      </div>
+    );
+  }
+}
 export default App;
