@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 // import { UserContext } from "./context/context";
@@ -9,15 +9,16 @@ import Detail from "./components/Detail";
 import About from "./components/About";
 import DatePicker from "./components/DatePicker";
 import ReduxTest from "./components/ReduxTest";
-import PrivateRoute from './components/PrivateRoute'
-import Login from './components/Login'
+import Qs from "./components/Qs";
+import PrivateRoute from "./components/PrivateRoute";
+import Login from "./components/Login";
+import Clock from "./components/Clock";
+import Lifecycle from "./components/Lifecycle";
+import Input from "./components/Input";
+import Hoc from "./components/Hoc";
 
-function NoMatch(){
-  return (
-    <div>
-      404
-    </div>
-  )
+function NoMatch() {
+  return <div>404</div>;
 }
 class Main extends React.Component {
   constructor(props) {
@@ -35,19 +36,32 @@ class Main extends React.Component {
       <BrowserRouter>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink exact activeStyle={{ color: "red" }} to="/">
+              Home
+            </NavLink>
           </li>
           {/* <li>
             <Link to="/detail">去detail</Link>
           </li> */}
           <li>
-            <Link to="/datePicker">去datePicker</Link>
+            <NavLink activeStyle={{ color: "red" }} to="/datePicker" replace>
+              去datePicker
+            </NavLink>
           </li>
           <li>
-            <Link to="/about">去about</Link>
+            <NavLink activeStyle={{ color: "red" }} to="/about">
+              去about
+            </NavLink>
           </li>
           <li>
-            <Link to="/reduxTest">去reduxTest</Link>
+            <NavLink activeStyle={{ color: "red" }} to="/reduxTest">
+              去reduxTest
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeStyle={{ color: "red" }} to="/qs">
+              去qs
+            </NavLink>
           </li>
         </ul>
         <ul>
@@ -65,12 +79,13 @@ class Main extends React.Component {
           <Provider store={store}>
             {/* context 上下文 */}
             {/* <UserContext.Provider value={this.state.user}> */}
-            <Route exact path="/" component={Home} />
+            <Route path="/" exact component={Home} />
             <Route path="/detail/:course" component={Detail} />
             <Route path="/datePicker" component={DatePicker} />
             <PrivateRoute path="/about" component={About} />
             <Route path="/reduxTest" component={ReduxTest} />
-            <Route path="*" component={NoMatch}/>
+            <Route path="/qs" component={Qs} />
+            <Route path="*" component={NoMatch} />
             <Route path="/login" component={Login} />
             {/* </UserContext.Provider> */}
           </Provider>
@@ -84,6 +99,10 @@ class App extends React.Component {
     return (
       <div>
         <Main />
+        <Clock />
+        <Lifecycle />
+        <Input />
+        <Hoc stage="react" />
       </div>
     );
   }

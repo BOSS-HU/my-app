@@ -3,11 +3,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  // console.log(state)
+  console.log("state" + JSON.stringify(state));
   return { num: state.counter };
 }
-function mapDispatchToProps(dispatch,ownProps) {
-  // console.log('ownProps:'+JSON.stringify(ownProps))
+function mapDispatchToProps(dispatch, ownProps) {
+  console.log("ownProps:" + JSON.stringify(ownProps));
   return {
     add() {
       dispatch({ type: "add" });
