@@ -10,15 +10,16 @@ const WithLog = Comps => {
 @WithName
 @WithLog
 class Base extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const { stage, name } = this.props;
+    console.log(this.props)
     return (
       <div>
-        {stage}-{name}
+        HOC: {stage}-{name}
       </div>
     );
   }

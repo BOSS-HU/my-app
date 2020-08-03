@@ -2,7 +2,6 @@ import React from "react";
 
 // import Home from "./Home";
 import PrinterName from "./PrinterName";
-import SayName from "./SayName";
 class Detail extends React.Component {
   render() {
     let { match, history, location } = this.props;
@@ -22,7 +21,6 @@ class Detail extends React.Component {
           前进
         </button>
         <PrinterName></PrinterName>
-        <SayName></SayName>
       </div>
     );
   }

@@ -7,7 +7,7 @@ export default class PrinterName extends React.Component {
         <UserContext.Consumer>
           {value => (
             <span>
-              {value.name},{value.sex}
+              PrinterName： {value.name},{value.sex}
             </span>
           )}
         </UserContext.Consumer>

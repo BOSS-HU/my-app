@@ -5,6 +5,7 @@ import store from "./store";
 // import { UserContext } from "./context/context";
 import "./App.css";
 import Home from "./components/Home";
+import PrinterName from './components/SayName'
 import Detail from "./components/Detail";
 import About from "./components/About";
 import DatePicker from "./components/DatePicker";
@@ -16,6 +17,7 @@ import Clock from "./components/Clock";
 import Lifecycle from "./components/Lifecycle";
 import Input from "./components/Input";
 import Hoc from "./components/Hoc";
+import Hook from './components/Hook'
 
 function NoMatch() {
   return <div>404</div>;
@@ -60,7 +62,7 @@ class Main extends React.Component {
           </li>
           <li>
             <NavLink activeStyle={{ color: "red" }} to="/qs">
-              去qs
+              去qs2
             </NavLink>
           </li>
         </ul>
@@ -98,11 +100,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <PrinterName />
         <Main />
         <Clock />
         <Lifecycle />
         <Input />
         <Hoc stage="react" />
+        <Hook></Hook>
       </div>
     );
   }
